@@ -16,6 +16,7 @@ function onInput(event) {
 
 function countryResult (data) {
   if (data.length === 1) {
+    clearResults();
     const mark = data.map(elem => template(elem)).join('')
     finalTemplate.insertAdjacentHTML('beforeend', mark);
   } else if (data.length > 1 && data.length <= 10) {
@@ -23,6 +24,7 @@ function countryResult (data) {
     const mark = data.map(elem => `<li>${elem.name}</li>`).join('');
     finalTemplate.insertAdjacentHTML('beforeend', mark);
   } else {
+    clearResults();
     PNotify.error({
       text: 'Error',
     });
