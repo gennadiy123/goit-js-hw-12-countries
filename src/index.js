@@ -11,10 +11,12 @@ const finalTemplate = document.querySelector('#country-list');
 input.addEventListener('input', debounce(onInput, 500));
 
 function onInput(event) {
+  finalTemplate.innerHTML = '';
   fetchCountries(event.target.value, countryResult);
 }
 
 function countryResult (data) {
+  PNotify.closeAll();
   if (data.length === 1) {
     clearResults();
     const mark = data.map(elem => template(elem)).join('')
